@@ -20,7 +20,8 @@ Truth tables allow us to represent every possible state of a logic circuit, by e
 
 These tables allow us to easily deduce outputs to circuits, which allows us to simplify them. Simplification of circuits means that there is more space on the processor, which allows more gates to be fit in and therefore increase the amount of processing that can be done.
 
-**Note:** The XNOR gate exists, but is not on our syllabus.
+!!! note
+    The XNOR gate exists, but is not on our syllabus.
 
 ##### NOT gate (1 input)
 
