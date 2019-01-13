@@ -2,6 +2,7 @@
 
 ## Lesson Notes
 ![The ENIAC computer](eniac.jpg)
+
 Originally, computers were programmed for just one job at a time, and could not do jobs other than the one it was programmed with. Manual reprogramming for computers then was tedious, as each cable had to be manually rewired. ENIAC, one of the earliest general-purpose computers, took 3 weeks to rewire for a new tasks. 
 
 ## Specification
@@ -11,6 +12,7 @@ A solution was made to this problem, where the program is stored as well as data
 
 ![The SSEM computer](640px-Manchester_baby_head_on.JPG)
 > A recreation of the SSEM computer. Photo from https://commons.wikimedia.org/wiki/File:Manchester_baby_head_on.JPG
+
 The first computer to implement this architecture was SSEM (Small-Scale Experimental Machine), the first reprogrammable stored-program computer, designed by people at Manchester University in 1948. This enabled significantly faster development of programs for the computer, so better software could be developed.
 
 In the stored program concept, there is a 3 box model:
