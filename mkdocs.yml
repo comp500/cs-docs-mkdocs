@@ -27,6 +27,7 @@ nav:
       - 4.5.2 Number bases: "4/5/number-bases.md"
       - 4.5.3 Units of information: "4/5/units-of-information.md"
       - 4.5.4 Binary Number System: "4/5/binary-number-system.md"
+      - 4.5.5 Information coding systems: "4/5/information-coding-systems.md"
       - 4.5.6 Representing images, sound and other data:
           - 4.5.6.1 Bit patterns: "4/5/6/bit-patterns.md"
           - 4.5.6.2 Analogue and digital: "4/5/6/analogue-and-digital.md"
@@ -35,7 +36,9 @@ nav:
           - 4.5.6.5 Vector graphics: "4/5/6/vector.md"
           - 4.5.6.6 Vector graphics versus bitmapped graphics: "4/5/6/vector-vs-bitmap.md"
           - 4.5.6.7 Digital Representation of Sound: "4/5/6/digital-representation-of-sound.md"
+          - 4.5.6.8 Musical Instrument Digital Interface (MIDI): "4/5/6/midi.md"
           - 4.5.6.9 Data compression: "4/5/6/compression.md"
+          - 4.5.6.10 Encryption: "4/5/6/encryption.md"
   - 4.6 Fundamentals of computer systems:
       - 4.6.1 Hardware and Software:
           - 4.6.1.1 Relationship between hardware and software: "4/6/1/hardware-and-software.md"
