@@ -11,3 +11,5 @@ Useful links for this specification:
 - [Past papers and mark schemes](https://www.aqa.org.uk/subjects/computer-science-and-it/as-and-a-level/computer-science-7516-7517/assessment-resources)
 
 See the [About](about) page to see the coverage of the specification.
+
+*Note:* The default settings of GitHub keep your email public. To prevent this, go to https://github.com/settings/emails and select "Keep my email address private".
