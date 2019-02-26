@@ -2,6 +2,8 @@
 This website was created to document AQA A Level Computer Science.
 
 ## Specification coverage
+*Note:* If a page does not exist for a topic you want to add, submit an issue at https://github.com/comp500/cs-docs-mkdocs/issues/new. I'll probably add blank pages for topics soon.
+
 * [ ] 4.1 Fundamentals of programming
 * [ ] 4.2 Fundamentals of data structures
 * [ ] 4.3 Fundamentals of algorithms
