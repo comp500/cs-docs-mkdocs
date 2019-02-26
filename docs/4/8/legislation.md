@@ -2,8 +2,10 @@
 
 ## Lesson Notes
 
-### Data Protection Act
-Introduced in 1984, this act was created due to public concern about the misuse of personal data in computers. Over the years, it has been updated to reflect newer changes to computing and how data is used.
+### Data Protection Act (1984, 1998, 2018)
+Introduced in 1984, this act was created due to public concern about the misuse of personal data in computers.
+Over the years, it has been updated to reflect newer changes to computing and how data is used.
+The latest edition implements the EU's General Data Protection Regulation (GDPR).
 
 This act requires that companies who store and process data must register with the [ICO](https://ico.org.uk/) (Information Commissioner's Office). They must state their reasons for storing and processing data, and ensures 8 principles:
 
