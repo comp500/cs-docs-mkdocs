@@ -9,3 +9,5 @@ Useful links for this specification:
 - [Full Specification PDF](https://filestore.aqa.org.uk/resources/computing/specifications/AQA-7516-7517-SP-2015.PDF)
 - [Online Specification](https://www.aqa.org.uk/subjects/computer-science-and-it/as-and-a-level/computer-science-7516-7517/subject-content-a-level)
 - [Past papers and mark schemes](https://www.aqa.org.uk/subjects/computer-science-and-it/as-and-a-level/computer-science-7516-7517/assessment-resources)
+
+See the [About](about) page to see the coverage of the specification.
