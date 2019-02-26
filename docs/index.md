@@ -12,4 +12,9 @@ Useful links for this specification:
 
 See the [About](about) page to see the coverage of the specification.
 
+## Editing
+A helpful guide to editing pages on GitHub is available here: https://help.github.com/en/articles/editing-files-in-another-users-repository
+
+You can do this from any page on this website by clicking the edit button at the top right.
+
 *Note:* The default settings of GitHub keep your email public. To prevent this, go to https://github.com/settings/emails and select "Keep my email address private".
