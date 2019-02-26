@@ -10,11 +10,13 @@ The latest edition implements the EU's General Data Protection Regulation (GDPR)
 This act requires that companies who store and process data must register with the [ICO](https://ico.org.uk/) (Information Commissioner's Office). 
 
 There are a number of terms that are often used when discussing the DPA:
+
 - **Personal Data** - This covers both facts and opinions about a living individual.
 - **Data** - In the context of the DPA, this has a slightly different meaning to the term 'data' that you learned about at the beginning of the course. Here it means anything which is part of a record about an individual for example, Date of Birth, name, NI number. Data can be held on paper or on a computer.
 - **Processing** - This covers the collection and storage and processing of personal data. The processing can include searching records, sorting data into order, comparing one record with another, altering the data, passing the data onto another party and removing it from the system.
 
 There are also terms used to describe specific roles or responsibilities of people under the DPA.
+
 - **Data Subject** - This is the person that the data is being collected from or stored about.
 - **Data Controller** - This is often the person in charge of the organisation - but it doesn't necessarily have to be. This person decides what data the organisation needs to collect and what it will be used for. This is the person who must apply for permission to collect and store data in the first place. The Data Controller is responsible for ensuring that any collection, storage and processing of data is done in accordance with the DPA.
 - **Data Processor** - Data is often processed by third parties who are not part of the Data Controller's organisation. These data processors are usually hired by the Data Controller to process the data for a specific task. Even though they are not directly a part of the Data Controller's organisation, the Data Controller is responsible for ensuring that they process the data in accordance with the DPA.
@@ -65,6 +67,7 @@ This act gives certain government agencies rights to intercept and decrypt data 
 
 ### Copyright, Designs and Patents Act (1988)
 This Act was introduced to protect the investment of time, money and effort by the people who create original pieces of work. This can mean authors of books, composers of music, the makers of a film, a computer game designer or a company that creates applications for smart phones. They all invest a great deal of time and money to produce these things and quite rightly, their work belongs to them. It's two main purposes are:
+
 - To ensure people are rewarded for their endeavours 
 - To give protection to the copyright holder if someone tries to copy or steal their work.
 
@@ -73,7 +76,7 @@ It is estimated that almost 40% of software is copied. This has a huge impact on
 ### The Health and Safety Act (1992)
 This act states that an employer must (if applicable to their work):
 
-1. Provide tilt able screens.
+1. Provide tiltable screens.
 2. Provide anti-glare screen filters.
 3. Provide adjustable chairs.
 4. Provide foot supports.
