@@ -22,10 +22,6 @@ extra_javascript:
   - "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=AM_HTMLorMML"
 nav:
   - Home: "index.md"
-  - 4.1 Fundamentals of programming:
-  - 4.2 Fundamentals of data structures:
-  - 4.3 Fundamentals of algorithms:
-  - 4.4 Theory of computation:
   - 4.5 Fundamentals of data representation:
       - 4.5.1 Number systems: "4/5/number-systems.md"
       - 4.5.2 Number bases: "4/5/number-bases.md"
@@ -57,9 +53,4 @@ nav:
       - 4.7.4 External hardware devices: "4/7/external-hardware-devices/index.md"
   - 4.8 Consequences of uses of computing:
       - 4.8.1 Individual (moral), social (ethical), legal and cultural issues and opportunities: "4/8/legislation.md"
-  - 4.9 Fundamentals of communication and networking:
-  - 4.10 Fundamentals of databases:
-  - 4.11 Big Data:
-  - 4.12 Fundamentals of functional programming:
-  - 4.13 Systematic approach to problem solving:
   - About: "about.md"
