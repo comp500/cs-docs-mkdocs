@@ -22,7 +22,12 @@ extra_javascript:
   - "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=AM_HTMLorMML"
 nav:
   - Home: "index.md"
+  - 4.1 Fundamentals of programming:
+  - 4.2 Fundamentals of data structures:
+  - 4.3 Fundamentals of algorithms:
+  - 4.4 Theory of computation:
   - 4.5 Fundamentals of data representation:
+      - 4.5.1 Number systems: "4/5/number-systems.md"
       - 4.5.2 Number bases: "4/5/number-bases.md"
       - 4.5.3 Units of information: "4/5/units-of-information.md"
       - 4.5.4 Binary Number System: "4/5/binary-number-system.md"
@@ -48,7 +53,13 @@ nav:
   - 4.7 Fundamentals of computer organisation and architecture:
       - 4.7.1 Internal hardware components of a computer: "4/7/internalcomponents/index.md"
       - 4.7.2 The stored program concept: "4/7/stored-program-concept/index.md"
+      - 4.7.3 Structure and role of the processor and its components: "4/7/processor.md"
       - 4.7.4 External hardware devices: "4/7/external-hardware-devices/index.md"
   - 4.8 Consequences of uses of computing:
       - 4.8.1 Individual (moral), social (ethical), legal and cultural issues and opportunities: "4/8/legislation.md"
+  - 4.9 Fundamentals of communication and networking:
+  - 4.10 Fundamentals of databases:
+  - 4.11 Big Data:
+  - 4.12 Fundamentals of functional programming:
+  - 4.13 Systematic approach to problem solving:
   - About: "about.md"
