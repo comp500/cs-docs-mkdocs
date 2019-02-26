@@ -19,7 +19,7 @@ You can do this from any page on this website by clicking the edit button at the
 
 - [Admonition](https://squidfunk.github.io/mkdocs-material/extensions/admonition/)
 - [CodeHilite](https://squidfunk.github.io/mkdocs-material/extensions/codehilite/)
-- [AsciiMath](http://asciimath.org/) for equations enclosed within `\``
+- [AsciiMath](http://asciimath.org/) for equations enclosed within \\`
 - [Caret](https://squidfunk.github.io/mkdocs-material/extensions/pymdown/#caret)
 - [Tilde](https://squidfunk.github.io/mkdocs-material/extensions/pymdown/#tilde)
 - [MagicLink](https://squidfunk.github.io/mkdocs-material/extensions/pymdown/#magiclink)
