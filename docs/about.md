@@ -7,6 +7,11 @@
 * [ ] 4.2 Fundamentals of data structures
 * [ ] 4.3 Fundamentals of algorithms
 * [ ] 4.4 Theory of computation
+    * [ ] 4.4.1 Abstraction and automation
+    * [ ] 4.4.2 Regular languages (partial)
+    * [ ] 4.4.3 Context-free languages (partial)
+    * [ ] 4.4.4 Classification of algorithms
+    * [ ] 4.4.5 A model of computation
 * [ ] 4.5 Fundamentals of data representation
     * [ ] 4.5.1 Number systems
     * [x] 4.5.2 Number bases
@@ -37,6 +42,10 @@
     * [x] 4.7.4 External hardware devices
 * [x] 4.8 Consequences of uses of computing
 * [ ] 4.9 Fundamentals of communication and networking
+    * [ ] 4.9.1 Communication
+    * [ ] 4.9.2 Networking
+    * [ ] 4.9.3 The Internet
+    * [ ] 4.9.4 The Transmission Control Protocol/Internet Protocol (TCP/IP) protocol
 * [ ] 4.10 Fundamentals of databases
 * [ ] 4.11 Big Data
 * [ ] 4.12 Fundamentals of functional programming

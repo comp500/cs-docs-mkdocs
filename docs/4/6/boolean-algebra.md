@@ -27,7 +27,7 @@ Identity|\`A\*1 = A\`|\`A\*0 = A\`
 Null / Dominance law|\`A\*0 = 0\`|\`A+1 = 1\`
 Idempotence law|\`A\*A=A\`|\`A+A=A\`
 Inverse law|\`A\*bar(A) = 0\`|\`A+bar(A) = 1\`
-Commutative law|\`A\*B = B.A\`|\`A+B = B+A\`
+Commutative law|\`A\*B = B\*A\`|\`A+B = B+A\`
 Associative law|\`(A\*B)\*C = A\*(B\*C)\`|\`(A+B)+C = A+(B+C)\`
 Distributive law|\`A+B\*C = (A+B)\*(A+C)\`|\`A\*(B+C) = A\*B+A\*C\`
 Absorption law|\`A\*(A+B) = A\`|\`A+A\*B = A\`

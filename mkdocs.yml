@@ -19,9 +19,15 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 extra_javascript:
-  - "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=AM_HTMLorMML"
+  - "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=AM_HTMLorMML"
 nav:
   - Home: "index.md"
+  - 4.4 Theory of computation:
+      - 4.4.1 Abstraction and automation: "4/4/abstraction.md"
+      - 4.4.2 Regular languages: "4/4/regular-languages.md"
+      - 4.4.3 Context-free languages: "4/4/bnf.md"
+      - 4.4.4 Classification of algorithms: "4/4/algorithm-comparison.md"
+      - 4.4.5 A model of computation: "4/4/turing-machine.md"
   - 4.5 Fundamentals of data representation:
       - 4.5.1 Number systems: "4/5/number-systems.md"
       - 4.5.2 Number bases: "4/5/number-bases.md"
@@ -56,4 +62,9 @@ nav:
       - 4.7.4 External hardware devices: "4/7/external-hardware-devices/index.md"
   - 4.8 Consequences of uses of computing:
       - 4.8.1 Individual (moral), social (ethical), legal and cultural issues and opportunities: "4/8/legislation.md"
+  - 4.9 Fundamentals of communication and networking:
+      - 4.9.1 Communication: "4/9/communication.md"
+      - 4.9.2 Networking: "4/9/networking.md"
+      - 4.9.3 The Internet: "4/9/internet.md"
+      - 4.9.4 The Transmission Control Protocol/Internet Protocol (TCP/IP) protocol: "4/9/tcp.md"
   - About: "about.md"
