@@ -21,6 +21,8 @@ Some common sets that are used are listed as follows:
 - \`QQ\`, the set of all rational numbers, numbers that can be expressed as a fraction, which includes all of \`ZZ\`
 - \`RR\`, the set of all real numbers, which includes irrational numbers such as \`pi\` or \`sqrt 2\` and all of \`QQ\`, but not imaginary numbers like \`oo\` or \`i\`
 
+Some of these are also explained in section 4.5.1: [Number systems](../../5/number-systems/).
+
 !!! note
     The set of all natural numbers, \`NN\`, is sometimes defined as not including the value 0. In the textbook, it is defined as including 0, so you should include it in answers to exam questions.
 
