@@ -67,6 +67,8 @@
 ## Licensing
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AQA Computer Science Documentation</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/comp500/cs-docs-mkdocs/" property="cc:attributionName" rel="cc:attributionURL">comp500</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
+Portions (currently parts of section 4.5.1) of this site are taken from the (now defunct) [docs.terminal.ink](https://github.com/Terminal/docs.terminal.ink) site, licensed under CC-BY-SA 4.0, the same license as this website, produced by 7coil.
+
 Due to the website using MkDocs and Material for MkDocs, the website (but not the source code on GitHub) is also covered by the following licenses:
 
 ### MkDocs license (BSD)
