@@ -283,3 +283,74 @@ It's a tedious rewrite of the loadGame function, but with some changes so you wr
 		Console.readLine();
 	}
 	```
+
+### Q7 - Add instruction to add a new character to game.
+
+Relatively easy, though I don't know what this would be used for, as the game doesn't seem to allow for multiple players easily, and implementing that would seem as too big of a task to complete. Since it could require a new function to be made, I would say this could be worth 5-7 marks.
+
+??? example "Example Solution"
+	
+	```java
+	Character createCharacter() {
+		//Ask them to input a name, description, and location of character
+		Character newChar = new Character();
+		
+		Console.write("Input the name of the character: ");
+		newChar.name = Console.readLine();
+		Console.write("Input a description of the character: ");
+		newChar.description = Console.readLine();
+		Console.write("Input the location of the character (specific ID): ");
+		newChar.currentLocation = Integer.parseInt(Console.readLine());
+		
+		return newChar;
+	}
+	```
+
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "newcharacter":
+	+			characters.add(createCharacter());
+	+			say("New character has been added.");
+	+			break;
+			default:
+				Console.writeLine("Sorry, you don't know how to " + command + ".");
+			}
+		}
+		Console.readLine();
+	}
+	```
+
+### Q8 - Add 'examine room' option to view details of room again.
+
+Pretty easy to do, you just have to copy two lines of code from playGame() into an else if that checks to see if the input after "examine" is "room". You do have to change the function to have it parse an ArrayList<Place>, but once you know that it's all easy to do. I'd say this is 4-6 marks.
+
+??? example "Example Solution"
+
+	```diff
+	void examine(ArrayList<Item> items, ArrayList<Character> characters, String itemToExamine, int currentLocation, ArrayList<Place> places) {
+		int count = 0;
+		if (itemToExamine.equals("inventory")) {
+			displayInventory(items);
+	+	} else if (itemToExamine.equals("room")) {
+	+		Console.writeLine(places.get(characters.get(0).currentLocation - 1).description);
+	+		displayGettableItemsInLocation(items, characters.get(0).currentLocation);
+		} else {
+			// ...
+		}
+	}
+	```
+
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+			case "examine":
+	-			examine(items, characters, instruction, characters.get(0).currentLocation);
+	+			examine(items, characters, instruction, characters.get(0).currentLocation, places);
+				break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
