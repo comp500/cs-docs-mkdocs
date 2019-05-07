@@ -105,13 +105,13 @@ Another easy thing to code. Might have gone a bit overboard with checking specif
 	-			stopGame = true;
 	+			do {
 	+				Console.writeLine("Are you sure you want to quit (Y/N)?");
-	+				String reponse = Console.readLine().trim().toLowerCase();
+	+				String response = Console.readLine().trim().toLowerCase();
 	+	
-	+				if (reponse.equals("y")) {
+	+				if (response.equals("y")) {
 	+					say("You decide to give up, try again another time.");
 	+					stopGame = true;
 	+					break;
-	+				} else if (reponse.equals("n")) {
+	+				} else if (response.equals("n")) {
 	+					break;
 	+				}
 	+			} while (true);
@@ -143,8 +143,8 @@ I can't see this turning up in the exam, as there isn't a string array that cont
 	+			Console.writeLine("quit: Ends the game, quitting the program.");
 	+			Console.writeLine("read: Will display the text of objects that can be read. (e.g. read book)");
 	+			Console.writeLine("move: Allows the player to move an object that is in the same location as they are. The move command needs to be followed by the name of the object that the player wants to move. If the object can be moved then the result of moving the object will be displayed on the screen. (e.g. move bed)");
-	+			Console.writeLine("open: Allows the player to open an openable item that is in the same location as they are. (e.g. open siler door)");
-	+			Console.writeLine("close: Allows the player to close an closable item that is in the same location as they are. (e.g. close siler door)");
+	+			Console.writeLine("open: Allows the player to open an openable item that is in the same location as they are. (e.g. open silver door)");
+	+			Console.writeLine("close: Allows the player to close an closable item that is in the same location as they are. (e.g. close silver door)");
 	+			Console.writeLine("playdice: The player will play a dice game with another character. If the player wins then a list of the items that the losing character is carrying is displayed and the user chooses an item to take; if the player loses, the other character takes a random item from the player’s inventory.");
 	+			Console.writeLine("The playdice command needs to be followed by the name of a character to play the dice game with. The character and the player need to be in the same location and both need to have a die. (e.g. playdice guard)");
 	+			break;
@@ -357,7 +357,7 @@ Pretty easy to do, you just have to copy two lines of code from playGame() into 
 
 ### Q9 - Create new items for the game via an 'additem (name)'
 
-A very similar process to the new character code. This time, however, it takes the name of the item as an input for the command e.g. additem book. Could require the use of a new fuinction. Worth around 5-7 marks I'd guess.
+A very similar process to the new character code. This time, however, it takes the name of the item as an input for the command e.g. additem book. Could require the use of a new function. Worth around 5-7 marks I'd guess.
 
 ??? example "Example Solution"
 
@@ -440,7 +440,7 @@ Quite easy, but it can become difficult if you don't remember that there is a ca
 	
 ### Q11 - Count the number of moves a player makes / Save a high score.
 
-Complicated to code, as it may require multiple functions to code, which is what I have done. I've probably gone way too overboard with what is being asked, but you never know what they might throw at you, so by coding something more difficult, it should make a question that may involve a part of this easier. If this were to show up in the same format, you're looking at around 15 marks or so, because this is hefty.
+Complicated to code, as it may require multiple functions, which is what I have done. I've probably gone way too overboard with what is being asked, but you never know what they might throw at you. By coding something more difficult, it should make a question that may involve a part of this easier. If this were to show up in the same format, you're looking at around 15 marks or so, because this is hefty.
 
 ??? example "Example Solution"
 
@@ -549,6 +549,7 @@ Very easy to do, all it requires is adding another check to an if statement to s
 		changeLocationOfItem(items, listofIndicesOfItemsInInventory.get(rno), otherCharacterID);
 	}
 	```
+
 ### Q13 - Create 'time' command.
 
 Seems an easy task, but if you cannot get a timestamp from when you started the game, and cannot work out the calculations for hours, minutes and seconds, you would be screwed. I'm guessing it would be a middle question worth around 6 marks.
