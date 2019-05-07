@@ -552,7 +552,7 @@ Very easy to do, all it requires is adding another check to an if statement to s
 
 ### Q13 - Create 'time' command.
 
-Seems an easy task, but if you cannot get a timestamp from when you started the game, and cannot work out the calculations for hours, minutes and seconds, you would be screwed. I'm guessing it would be a middle question worth around 6 marks.
+Seems an easy task, but if you cannot get a timestamp from when you started the game, and cannot work out the calculations for hours, minutes and seconds, you would be screwed. *Considering that the AQA spec doesn't cover how to handle time within programming languages, and time functions are not easily interchangeable between languages, the chances of this coming up are highly slim.*
 
 ??? example "Example Solution"
 
@@ -581,4 +581,109 @@ Seems an easy task, but if you cannot get a timestamp from when you started the 
 		Console.readLine();
 	}
 
+	```
+
+### Q14 - Limit Inventory Size by Item Count.
+
+Simple enough to code, but the function needs to be added in a couple of places to ensure that it works throughout the game, so be careful. Would be worth 6-7 marks I reckon considering it requires to get called in two separate functions.
+
+Limit for items have been set to 5 or lower in this example.
+
+??? example "Example Solution"
+
+	```java
+	int getInventorySpace(ArrayList<Item> items) {
+		int count = 0;
+
+		for (Item item : items) {
+			if (item.location == INVENTORY) count++;
+		}
+
+		return count;
+	}
+	```
+	
+	```diff
+	boolean getItem(ArrayList<Item> items, String itemToGet, int currentLocation) {
+		boolean stopGame = false, canGet = false;
+		String resultForCommand, subCommand = "", subCommandParameter = "";
+		int indexOfItem, position;
+		indexOfItem = getIndexOfItem(itemToGet, -1, items);
+		if (indexOfItem == -1) {
+			Console.writeLine("You can't find " + itemToGet + ".");
+		}
+		// ...
+	+	} else if (getInventorySpace(items) >= 5) {
+	+		Console.writeLine("You do not have enough space to carry " + itemToGet + ". Drop an item to create space.");
+		} else {
+			canGet = true;            
+		}
+		// ...
+		return stopGame;
+	}
+	```
+	
+	```diff
+	void takeItemFromOtherCharacter(ArrayList<Item> items, int otherCharacterID) {
+	+	if (getInventorySpace(items) >= 5) {
+	+		Console.writeLine("You do not have enough space to carry a new item. Drop an item to create space.");
+	+		return;
+	+	}
+		// ...
+	}
+	```
+
+### Q15 - Limit Inventory Size by Item Weight.
+
+Very similar to the question above, but now you are looking for strings within a string. Would be worth a similar mark as above, around 6-7.
+
+Limit for weight has been set to a maximum of 7 in this example.
+
+??? example "Example Solution"
+
+	
+	```java
+	int getInventoryWeight(ArrayList<Item> items) {
+		int weight = 0;
+
+		for (Item item : items) {
+			if (item.location == INVENTORY) {
+				if (item.status.contains("tiny")) weight += 1;
+				if (item.status.contains("small")) weight += 2;
+				if (item.status.contains("medium")) weight += 3;
+			}
+		}
+
+		return weight;
+	}
+	```
+	
+	```diff
+	boolean getItem(ArrayList<Item> items, String itemToGet, int currentLocation) {
+		boolean stopGame = false, canGet = false;
+		String resultForCommand, subCommand = "", subCommandParameter = "";
+		int indexOfItem, position;
+		indexOfItem = getIndexOfItem(itemToGet, -1, items);
+		if (indexOfItem == -1) {
+			Console.writeLine("You can't find " + itemToGet + ".");
+		}
+		// ...
+	+	} else if (getInventoryWeight(items) > 7) {
+	+		Console.writeLine("Your inventory is too heavy to carry " + itemToGet + ". Drop an item to create space.");
+		} else {
+			canGet = true;            
+		}
+		// ...
+		return stopGame;
+	}
+	```
+	
+	```diff
+	void takeItemFromOtherCharacter(ArrayList<Item> items, int otherCharacterID) {
+	+	if (getInventoryWeight(items) > 7) {
+	+		Console.writeLine("Your inventory is too heavy to carry a new item. Drop an item to create space.");
+	+		return;
+	+	}
+		// ...
+	}
 	```
