@@ -387,7 +387,7 @@ A very similar process to the new character code. This time, however, it takes t
 	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
 			// ...
 	+		case "additem":
-	+			addNewItem(instruction);
+	+			items.add(addNewItem(instruction));
 	+			break;
 			// ...
 			}
