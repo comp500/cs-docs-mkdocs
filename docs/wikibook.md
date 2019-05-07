@@ -552,7 +552,7 @@ Very easy to do, all it requires is adding another check to an if statement to s
 
 ### Q13 - Create 'time' command.
 
-Seems an easy task, but if you cannot get a timestamp from when you started the game, and cannot work out the calculations for hours, minutes and seconds, you would be screwed. *Considering that the AQA spec doesn't cover how to handle time within programming languages, and time functions are not easily interchangable between languages, the chances of this coming up are highly slim.*
+Seems an easy task, but if you cannot get a timestamp from when you started the game, and cannot work out the calculations for hours, minutes and seconds, you would be screwed. *Considering that the AQA spec doesn't cover how to handle time within programming languages, and time functions are not easily interchangeable between languages, the chances of this coming up are highly slim.*
 
 ??? example "Example Solution"
 
