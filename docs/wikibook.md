@@ -354,3 +354,230 @@ Pretty easy to do, you just have to copy two lines of code from playGame() into 
 		Console.readLine();
 	}
 	```
+
+### Q9 - Create new items for the game via an 'additem (name)'
+
+A very similar process to the new character code. This time, however, it takes the name of the item as an input for the command e.g. additem book. Could require the use of a new fuinction. Worth around 5-7 marks I'd guess.
+
+??? example "Example Solution"
+
+	```java
+	Item addNewItem(String name) {
+		Item newItem = new Item();
+
+		newItem.name = name;
+		Console.write("Input an ID for the item: ");
+		newItem.id = Integer.parseInt(Console.readLine());
+		Console.write("Input a description of the item: ");
+		newItem.description = Console.readLine();
+		Console.write("Input status for the item: ");
+		newItem.status = Console.readLine();
+		Console.write("Input the location of the item: ");
+		newItem.location = Integer.parseInt(Console.readLine());
+		Console.write("Input the commands of the item: ");
+		newItem.commands = Console.readLine();
+		Console.write("Input the results of the item: ");
+		newItem.results = Console.readLine();
+
+		return newItem;
+	}
+	```
+	
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "additem":
+	+			addNewItem(instruction);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+### Q10 - Create a new 'drop (item)' command.
+
+Quite easy, but it can become difficult if you don't remember that there is a case for an item not existing and an item that isn't in your inventory. It also requires the use of changeLocationOfItem() to drop the item where the player is currently standing. I'd say this would be an ending question, worth around 10 marks or so.
+
+??? example "Example Solution"
+
+	```java
+	void drop(String itemToDrop, ArrayList<Item> items, int currentLocation) {
+		//Get the index of the item.
+		int indexOfItem = getIndexOfItem(itemToDrop, -1, items);
+
+		if (indexOfItem == -1)
+		{
+			//Item doesn't exist
+			Console.writeLine("You can't find " + itemToDrop + ".");
+		}
+		else if (items.get(indexOfItem).location == INVENTORY)
+		{
+			//Item has been dropped
+			Console.writeLine("You dropped " + itemToDrop);
+			changeLocationOfItem(items, indexOfItem, currentLocation);
+		}
+		else if (items.get(indexOfItem).location != INVENTORY)
+		{
+			//Item isn't in the inventory
+			Console.writeLine("You cannot find that in your inventory.");
+		}
+	}
+	```
+	
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "drop":
+	+			drop(instruction, items, characters.get(0).currentLocation);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+	
+### Q11 - Count the number of moves a player makes / Save a high score.
+
+Complicated to code, as it may require multiple functions to code, which is what I have done. I've probably gone way too overboard with what is being asked, but you never know what they might throw at you, so by coding something more difficult, it should make a question that may involve a part of this easier. If this were to show up in the same format, you're looking at around 15 marks or so, because this is hefty.
+
+??? example "Example Solution"
+
+	```java
+	int getHighScore() {
+		int score;
+
+		try {
+			File file = new File("highscore.gme");
+
+			if (file.exists()) {
+				//Get the high score from the file.
+				FileInputStream binaryReader = new FileInputStream("highscore.gme");
+				DataInputStream reader = new DataInputStream (binaryReader);
+				
+				score = reader.readInt();
+				reader.close();
+				return score;
+			} else {
+				//No high score found, so just return 0. We will use 0 as a way to say no high score has been set.
+				Console.writeLine("Couldn't find a high score, creating high score file.");
+				file.createNewFile();
+				return 0;
+			}			
+		} catch (Exception e) {
+			//No high score found, so just return 0. We will use 0 as a way to say no high score has been set.
+			return 0;
+		}
+	}
+
+	boolean saveHighScore(int score) {
+		try {
+			//False in FileOutputStream has it not append to the file, thus overwriting the high score.
+			FileOutputStream binaryWriter = new FileOutputStream("highscore.gme", false);
+			DataOutputStream writer = new DataOutputStream(binaryWriter);
+			writer.writeInt(score);
+			writer.close();
+			Console.writeLine("New high score saved!");
+			return true;
+		} catch (Exception e) {
+			//Couldn't save for some reason, so just catch the exception and carry on.
+			Console.writeLine("Couldn't save high score.");
+			return false;
+		}
+	}
+	```
+	
+	```diff
+	-void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+	+void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places, int highScore) {
+		//QUESTION ADDITION
+	+	int moves = 0;
+		boolean stopGame = false, moved = true;
+		String instruction, command;
+		int resultOfOpenClose;
+		while (!stopGame) {
+	+		moves++;
+			
+			if (moved) {
+				Console.writeLine();
+				Console.writeLine();
+				Console.writeLine(places.get(characters.get(0).currentLocation - 1).description);
+				displayGettableItemsInLocation(items, characters.get(0).currentLocation);
+				moved = false;
+			}
+			instruction = getInstruction();
+			String[] returnStrings = extractCommand(instruction);
+			command = returnStrings[0];
+			instruction = returnStrings[1];
+			switch (command)
+			{
+			case "get":
+				stopGame = getItem(items, instruction, characters.get(0).currentLocation);
+	+			//Check to see if stopGame is true AND the number of moves are smaller than current high score or the high score is 0
+	+			if (stopGame) {
+	+				Console.writeLine("Game completed in " + moves + " moves.");
+	+				if (moves < highScore || highScore == 0) saveHighScore(moves);
+	+			}
+				break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+	
+### Q12 - Prevent guard from taking the dice if you lose.
+
+Very easy to do, all it requires is adding another check to an if statement to see if the item is a die or not. An initial question worth a couple of marks.
+
+??? example "Example Solution"
+
+	```diff
+	void takeRandomItemFromPlayer(ArrayList<Item> items, int otherCharacterID) {
+		ArrayList<Integer> listofIndicesOfItemsInInventory = new ArrayList<>();
+		int count = 0;
+		while (count < items.size()) {
+	-		if (items.get(count).location == INVENTORY) {
+	+		if (items.get(count).location == INVENTORY && !items.get(count).name.contains("die")) {
+				listofIndicesOfItemsInInventory.add(count);
+			}
+			count++;
+		}
+		int rno = getRandomNumber(0, listofIndicesOfItemsInInventory.size() - 1);
+		Console.writeLine("They have taken your " + items.get(listofIndicesOfItemsInInventory.get(rno)).name + ".");
+		changeLocationOfItem(items, listofIndicesOfItemsInInventory.get(rno), otherCharacterID);
+	}
+	```
+### Q13 - Create 'time' command.
+
+Seems an easy task, but if you cannot get a timestamp from when you started the game, and cannot work out the calculations for hours, minutes and seconds, you would be screwed. I'm guessing it would be a middle question worth around 6 marks.
+
+??? example "Example Solution"
+
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+	+	//Get the start time just using Epoch seconds, as it allows for easier time calculations.
+	+	long timeStart = Instant.now().getEpochSecond();
+		boolean stopGame = false, moved = true;
+		String instruction, command;
+		int resultOfOpenClose;
+		while (!stopGame) {
+			// ...
+	+		case "time":
+	+			long totalElapsed = Instant.now().getEpochSecond() - timeStart;
+	+			int hrs, mins, secs;
+	+			
+	+			hrs = (int) (totalElapsed / 3600);
+	+			mins = (int) (totalElapsed / 60);
+	+			secs = (int) (totalElapsed % 60);
+	+		
+	+			//String format has the time show with leading zeros for a nicer look.
+	+			say(String.format("Time elapsed: %02d:%02d:%02d", hrs, mins, secs));
+	+			break;
+			// ...
+		}
+		Console.readLine();
+	}
+
+	```
