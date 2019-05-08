@@ -690,7 +690,7 @@ Limit for weight has been set to a maximum of 7 in this example.
 
 ### Q16 - Hit a character with a weapon.
 
-A massive question that require creating a couple of functions and changing some existing ones, along with adding a new data type to the Character object. I can't see this being in the exam due to it being a long and difficult task to carry out. If it was to show up, you're looking at around 15+ marks, but as I said, I don't think they'd ever ask something like this, or especially to the degree that I have coded it. They could possibly ask for a much simpler one of just attacking a character no matter what, but that seems silly. 
+A massive question that requires creating a couple of functions and changing some existing ones, along with adding a new data type to the Character object. I can't see this being in the exam due to it being a long and difficult task to carry out. If it was to show up, you're looking at around 15+ marks, but as I said, I don't think they'd ever ask something like this, or especially to the degree that I have coded it. They could possibly ask for a much simpler one of just attacking a character no matter what, but that seems silly. 
 
 ??? example "Example Solution"
 
@@ -836,7 +836,7 @@ A massive question that require creating a couple of functions and changing some
 	
 ### Q17 - Add Eat Command.
 
-Reasonable task, and considering there's a flag in the status to say whether an item is edible or not, it seems as thought they will most likely ask a question similar to this in the exam. You also have an apple in your inventory in the flag2.gme file, meaning it would be an easy test to carry out. Would be worth 7-10 marks in my opinion.
+Reasonable task, and considering there's a flag in the status to say whether an item is edible or not, it seems as though they will most likely ask a question similar to this in the exam. You also have an apple in your inventory in both gme files, meaning it would be an easy test to carry out. Would be worth 7-10 marks in my opinion.
 
 ??? example "Example Solution"
 
