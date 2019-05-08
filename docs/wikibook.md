@@ -727,7 +727,7 @@ A massive question that require creating a couple of functions and changing some
 		int count;
 		boolean playerHasWeapon = false;
 		boolean playersInSameRoom = false;
-		boolean isOtherCharacterDefeceless = true;
+		boolean isOtherCharacterDefenseless = true;
 
 		//See if the player has a weapon.
 		for (Item item : items) {
@@ -743,7 +743,7 @@ A massive question that require creating a couple of functions and changing some
 				playersInSameRoom = true;
 				for (Item item : items) {
 					if (item.location == characters.get(count).id && item.status.contains("weapon")) {
-						isOtherCharacterDefeceless = false;
+						isOtherCharacterDefenseless = false;
 					}
 				}
 			}
@@ -757,7 +757,7 @@ A massive question that require creating a couple of functions and changing some
 		} else if (!playerHasWeapon) {
 			Console.writeLine("You do not have a weapon to attack the character with.");
 			return false;
-		} else if (!isOtherCharacterDefeceless) {
+		} else if (!isOtherCharacterDefenseless) {
 			Console.writeLine("It seems as though you would lose the fight as the the character has a weapon...");
 			return false;
 		} else {
@@ -765,17 +765,16 @@ A massive question that require creating a couple of functions and changing some
 		}
 	}
 
-	//A copy of chanegStatusOfItem, but it deals with a Character object instead.
+	//A copy of changeStatusOfItem, but it deals with a Character object instead.
 	void changeStatusOfCharacter(ArrayList<Character> characters, int indexOfCharacter, String newStatus) {
-		Character thischaracter = characters.get(indexOfCharacter);
-		thischaracter.status = newStatus;
-		characters.set(indexOfCharacter, thischaracter);
+		Character thisCharacter = characters.get(indexOfCharacter);
+		thisCharacter.status = newStatus;
+		characters.set(indexOfCharacter, thisCharacter);
 	}
 	```
 	
 	```diff
 	class Character {
-		//QUESTION ADDITION
 	-	String name, description;
 	+	String name, description, status;
 		int id, currentLocation;
@@ -837,7 +836,7 @@ A massive question that require creating a couple of functions and changing some
 	
 ### Q17 - Add Eat Command.
 
-Reasonable task, and considering there's a flag in the status to say whether an item is edible or not, it seems as thought they will most likely ask a question similar to this in the exam. You also have an apple in your inventory in the flag2.gme file, meaing it would be an easy test to carry out. Would be worth 7-10 marks in my opinion.
+Reasonable task, and considering there's a flag in the status to say whether an item is edible or not, it seems as thought they will most likely ask a question similar to this in the exam. You also have an apple in your inventory in the flag2.gme file, meaning it would be an easy test to carry out. Would be worth 7-10 marks in my opinion.
 
 ??? example "Example Solution"
 
