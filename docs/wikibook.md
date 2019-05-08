@@ -687,3 +687,250 @@ Limit for weight has been set to a maximum of 7 in this example.
 		// ...
 	}
 	```
+
+### Q16 - Hit a character with a weapon.
+
+A massive question that require creating a couple of functions and changing some existing ones, along with adding a new data type to the Character object. I can't see this being in the exam due to it being a long and difficult task to carry out. If it was to show up, you're looking at around 15+ marks, but as I said, I don't think they'd ever ask something like this, or especially to the degree that I have coded it. They could possibly ask for a much simpler one of just attacking a character no matter what, but that seems silly. 
+
+??? example "Example Solution"
+
+	```java
+	void attackCharacter(ArrayList<Item> items, ArrayList<Character> characters, String otherCharacterName) {
+		int indexOfOtherCharacter = 0;
+		boolean attackPossible = checkIfAttackPossible(items, characters, otherCharacterName);
+
+		//Get the index of the other character
+		for (int i = 0; i < characters.size(); i++) {
+			if (characters.get(0).currentLocation == characters.get(i).currentLocation && characters.get(i).name.equals(otherCharacterName)) {
+				indexOfOtherCharacter = i;
+			}
+		}
+
+		//Carry out attack if possible
+		if (attackPossible) {
+			String status = "unconscious";
+			changeStatusOfCharacter(characters, indexOfOtherCharacter, status);
+			say("They have been knocked out!");
+
+			for (Item item : items) {
+				if (item.location == characters.get(indexOfOtherCharacter).id) {
+					//Drop all items the other character had
+					changeLocationOfItem(items, getIndexOfItem(item.name, item.id, items), characters.get(indexOfOtherCharacter).currentLocation);
+				}
+			}
+
+			displayGettableItemsInLocation(items, characters.get(0).currentLocation);
+		}
+	}
+
+	boolean checkIfAttackPossible(ArrayList<Item> items, ArrayList<Character> characters, String otherCharacterName) {
+		int count;
+		boolean playerHasWeapon = false;
+		boolean playersInSameRoom = false;
+		boolean isOtherCharacterDefenseless = true;
+
+		//See if the player has a weapon.
+		for (Item item : items) {
+			if (item.location == INVENTORY && item.status.contains("weapon")) {
+				playerHasWeapon = true;
+			}
+		}
+
+		//Check if the other character is in the same room, has no state (unconscious) and if they have a weapon
+		count = 1;
+		do {
+			if (characters.get(0).currentLocation == characters.get(count).currentLocation && characters.get(count).name.equals(otherCharacterName) && characters.get(count).status == null) {
+				playersInSameRoom = true;
+				for (Item item : items) {
+					if (item.location == characters.get(count).id && item.status.contains("weapon")) {
+						isOtherCharacterDefenseless = false;
+					}
+				}
+			}
+			count++;
+		} while (count < characters.size() && !playersInSameRoom) ;
+
+		//Messages to display
+		if (!playersInSameRoom) {
+			Console.writeLine("There is nobody to attack in the current room.");
+			return false;
+		} else if (!playerHasWeapon) {
+			Console.writeLine("You do not have a weapon to attack the character with.");
+			return false;
+		} else if (!isOtherCharacterDefenseless) {
+			Console.writeLine("It seems as though you would lose the fight as the the character has a weapon...");
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	//A copy of changeStatusOfItem, but it deals with a Character object instead.
+	void changeStatusOfCharacter(ArrayList<Character> characters, int indexOfCharacter, String newStatus) {
+		Character thisCharacter = characters.get(indexOfCharacter);
+		thisCharacter.status = newStatus;
+		characters.set(indexOfCharacter, thisCharacter);
+	}
+	```
+	
+	```diff
+	class Character {
+	-	String name, description;
+	+	String name, description, status;
+		int id, currentLocation;
+	}
+	```
+	
+	```diff
+	void examine(ArrayList<Item> items, ArrayList<Character> characters, String itemToExamine, int currentLocation) {
+		// ...
+			while (count < characters.size()) {
+				if (characters.get(count).name.equals(itemToExamine) && characters.get(count).currentLocation == currentLocation) {
+					Console.writeLine(characters.get(count).description);
+		+			if (characters.get(count).status.contains("unconscious")) Console.writeLine("The " + characters.get(count).name + " is unconscious.");
+					return;
+				}
+				count++;
+			}
+			Console.writeLine("You cannot find " + itemToExamine + " to look at.");
+		}
+	}
+	```
+	
+	```diff
+	int[] checkIfDiceGamePossible(ArrayList<Item> items, ArrayList<Character> characters, int indexOfPlayerDie, int indexOfOtherCharacter, int indexOfOtherCharacterDie, String otherCharacterName) {
+		while (count < characters.size() && !playersInSameRoom) {
+		-	if (characters.get(0).currentLocation == characters.get(count).currentLocation && characters.get(count).name.equals(otherCharacterName) {
+		+	if (characters.get(0).currentLocation == characters.get(count).currentLocation && characters.get(count).name.equals(otherCharacterName) && !characters.get(count).status.contains("unconscious")) {
+				playersInSameRoom = true;
+				for (Item thing : items) {
+					if (thing.location == characters.get(count).id && thing.name.contains("die")) {
+						otherCharacterHasDie = true;
+						indexOfOtherCharacterDie = getIndexOfItem("", thing.id, items);
+						indexOfOtherCharacter = count;
+					}
+				}
+			}
+			count++;
+		}
+		int diceGamePossible = 0;
+		if (playerHasDie && playersInSameRoom && otherCharacterHasDie) {
+			diceGamePossible = 1;
+		}
+		return new int[]{diceGamePossible, indexOfPlayerDie, indexOfOtherCharacter, indexOfOtherCharacterDie};
+	}
+	```
+	
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "attack":
+	+			attackCharacter(items, characters, instruction);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+	
+### Q17 - Add Eat Command.
+
+Reasonable task, and considering there's a flag in the status to say whether an item is edible or not, it seems as thought they will most likely ask a question similar to this in the exam. You also have an apple in your inventory in the flag2.gme file, meaning it would be an easy test to carry out. Would be worth 7-10 marks in my opinion.
+
+??? example "Example Solution"
+
+	```java
+	void eat(ArrayList<Item> items, String itemToEat) {
+		boolean edible;
+		int indexOfItem = getIndexOfItem(itemToEat, -1, items);
+		
+		//If index is -1, item doesn't exist
+		if (indexOfItem == -1) {
+			Console.writeLine("You can't find the " + itemToEat + " to eat.");
+			return;
+		}
+		
+		if (items.get(indexOfItem).status.contains("edible")) {
+			edible = true;
+		} else {
+			edible = false;
+		}
+		
+		if (items.get(indexOfItem).location == INVENTORY && edible) {
+			changeLocationOfItem(items, indexOfItem, 0);
+			say("You have eaten your " + itemToEat + ".");
+		} else if (items.get(indexOfItem).location == INVENTORY && !edible) {
+			say("You can't eat the " + itemToEat + ".");
+		} else {
+			say("You don't have that item in your inventory!");
+		}
+	}
+	```
+	
+	```diff
+		void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "eat":
+	+			eat(items, instruction);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+	
+### Q18 - Add 'Fill (item)' Command.
+
+Requires quite a bit of code to do, but when reading it over, it is easy to see what is going on. Would be an ending question worth 10-12 marks, considering it has a pretty lengthy function to be able to fill a container.
+
+??? example "Example Solution"
+	
+	```java
+	void fill(ArrayList<Item> items, ArrayList<Character> characters, ArrayList<Place> places, String itemToFill) {
+		boolean playerHasContainer = false;
+		boolean playerIsInSameRoom = false;
+		int indexOfBarrel = getIndexOfItem("barrel", -1, items);
+		int indexOfVessel = 0;
+
+		for (Item item : items) {
+			if (item.location == INVENTORY && item.name.contains(itemToFill) && item.status.contains("container")) {
+				playerHasContainer = true;
+				indexOfVessel = getIndexOfItem(item.name, item.id, items);
+			}
+		}
+		
+		//See if player is in the same place as the barrel
+		if (characters.get(0).currentLocation == items.get(indexOfBarrel).location) {
+			playerIsInSameRoom = true;
+		}
+		
+		if (playerHasContainer && playerIsInSameRoom) {
+			if (items.get(indexOfVessel).name.contains("of water")) {
+				say(itemToFill + " is already full.");
+				return;
+			} else {
+				say(itemToFill + " has been filled with water.");
+				items.get(indexOfVessel).name += " of water";
+			}
+		} else {
+			if (!playerHasContainer) say("You do not have a container that can be filled in your inventory");
+			else if (!playerIsInSameRoom) say("You are not in the same room as a barrel.");
+		}
+		
+	}
+	```
+	
+	```diff
+			void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "fill":
+	+			fill(items, characters, places, instruction);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
