@@ -49,7 +49,9 @@ It requires the use of other functions within the code (changeStatusOfItem and o
 				// ...
 			case "playdice":
 				playDiceGame(characters, items, instruction);
-	+			autoUnlockOpenDoor(items, places, characters.get(0).currentLocation);
+	+			if (instruction.equals("gold key") || instruction.equals("silver key")) {
+	+				autoUnlockOpenDoor(items, places, characters.get(0).currentLocation);
+	+			}
 				break;
 			case "quit":
 				say("You decide to give up, try again another time.");
