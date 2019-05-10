@@ -337,17 +337,18 @@ Pretty easy to do, you just have to copy two lines of code from playGame() into 
 ??? example "Example Solution"
 
 	```diff
-	void examine(ArrayList<Item> items, ArrayList<Character> characters, String itemToExamine, int currentLocation, ArrayList<Place> places) {
-		int count = 0;
-		if (itemToExamine.equals("inventory")) {
-			displayInventory(items);
-	+	} else if (itemToExamine.equals("room")) {
-	+		Console.writeLine(places.get(characters.get(0).currentLocation - 1).description);
-	+		displayGettableItemsInLocation(items, characters.get(0).currentLocation);
-		} else {
-			// ...
+	-	void examine(ArrayList<Item> items, ArrayList<Character> characters, String itemToExamine, int currentLocation) {
+	+	void examine(ArrayList<Item> items, ArrayList<Character> characters, String itemToExamine, int currentLocation, ArrayList<Place> places) {
+			int count = 0;
+			if (itemToExamine.equals("inventory")) {
+				displayInventory(items);
+	+		} else if (itemToExamine.equals("room")) {
+	+			Console.writeLine(places.get(characters.get(0).currentLocation - 1).description);
+	+			displayGettableItemsInLocation(items, characters.get(0).currentLocation);
+			} else {
+				// ...
+			}
 		}
-	}
 	```
 
 	```diff
