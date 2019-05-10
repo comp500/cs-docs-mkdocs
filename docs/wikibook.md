@@ -184,12 +184,17 @@ There are multiple ways this may go. They could be nice and just ask you to inpu
 		// If it is an invalid response, exit the function, otherwise teleport the player
 		try {
 			response = Integer.parseInt(Console.readLine().trim());
-			characters.get(0).currentLocation = response;
-			say("You have been teleported.");
+			if (response > 0 && response < 9) {
+				characters.get(0).currentLocation = response;
 
-			// Describe the room and its items
-			Console.writeLine(places.get(characters.get(0).currentLocation - 1).description);
-			displayGettableItemsInLocation(items, characters.get(0).currentLocation);
+				// Describe the room and its items
+				Console.writeLine(places.get(characters.get(0).currentLocation - 1).description);
+				displayGettableItemsInLocation(items, characters.get(0).currentLocation);
+				say("You have teleported.");
+			} else {
+				say("Not a valid room to teleport to.");
+				return;
+			}           
 		} catch (Exception e) {
 			say("Not a valid room to teleport to.");
 			return;
