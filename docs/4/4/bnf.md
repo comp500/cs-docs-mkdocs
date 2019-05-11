@@ -19,7 +19,7 @@ The above example defines completely the language of pencil hardness, the scale 
 #### What do the symbols mean?
 Symbol | Meaning
 ------ | -------
-&gt;name&lt; | A statement defined in the language
+&lt;name&gt; | A statement defined in the language
 := | The previous statement is replaced by the following statement when it is evaluated
 \| | OR, used in statement definitions to show the possible values of a statement
 
