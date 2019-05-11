@@ -1,0 +1,30 @@
+{
+  "name": "cs-docs-mkdocs",
+  "version": "1.0.0",
+  "description": "AQA A Level Computer Science documentation, made using mkdocs!",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdocs build && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp500/cs-docs-mkdocs.git"
+  },
+  "author": "comp500 and contributors",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/comp500/cs-docs-mkdocs/issues"
+  },
+  "homepage": "https://github.com/comp500/cs-docs-mkdocs#readme",
+  "dependencies": {
+    "asciimath2tex": "^1.1.0",
+    "esm": "^3.2.22",
+    "html-entities": "^1.2.1",
+    "katex": "^0.10.1",
+    "walk": "^2.3.14"
+  }
+}
