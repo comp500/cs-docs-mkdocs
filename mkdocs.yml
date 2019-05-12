@@ -20,8 +20,6 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.details
   - pymdownx.superfences
-extra_css:
-  - "https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css"
 nav:
   - Home: "index.md"
   - 4.4 Theory of computation:
