@@ -879,7 +879,7 @@ Reasonable task, and considering there's a flag in the status to say whether an 
 	```
 	
 	```diff
-		void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
 			// ...
 	+		case "eat":
 	+			eat(items, instruction);
@@ -933,10 +933,243 @@ Requires quite a bit of code to do, but when reading it over, it is easy to see 
 	```
 	
 	```diff
-			void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
 			// ...
 	+		case "fill":
 	+			fill(items, characters, places, instruction);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+
+### Q19 - Add Drink Command.
+
+Can require two functions to code - one to check if there's a barrel in the room (which is only in location 8), and another to actually drink from the barrel. I'd say it would be one of the last questions worth around 10ish marks.
+
+??? example "Example Solution"
+
+	```java
+	boolean checkIfDrinkable(ArrayList<Item> items, ArrayList<Character> characters) {
+		for (Item item : items) {
+			//Since the barrel is only in location 8, just check for that.
+			if (item.location == INVENTORY && item.status.contains("container") && characters.get(0).currentLocation == 8) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	void drink(ArrayList<Item> items, ArrayList<Character> characters, String itemToDrinkFrom) {
+		if (checkIfDrinkable(items, characters)) {
+			say("You have taken a drink from the barrel.");
+		} else {
+			say("You cannot drink from " + itemToDrinkFrom);
+		}
+	}
+	```
+	
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "drink":
+	+			drink(items, characters, instruction);
+	+			break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+	
+### Q20 - If you are in the cellar you must be carrying a torch to see items.
+
+Easy question that just requires adding an if statement to the examine function. Would be worth 5 or 6 marks I'd say.
+
+??? Example Solution
+
+	```diff
+	void examine(ArrayList<Item> items, ArrayList<Character> characters, String itemToExamine, int currentLocation) {
+		int count = 0;
+		
+	+	if (characters.get(0).currentLocation == 8) {
+	+		for (Item item : items) {
+	+			if (item.name.contains("torch") && item.location != INVENTORY) {
+	+				say("The cellar has no lighting. To see items, you need a torch.");
+	+				return;
+	+			}
+	+		}
+	+	}
+	
+		if (itemToExamine.equals("inventory")) {
+			displayInventory(items);
+		} else {
+		// ...
+		}
+	}
+	```
+	
+### Q21 - If dice game is lost, have last words.
+
+Another easy question that has you lose your life and end the game if you lose the dice game against the guard. Would be worst 5 to 6 marks.
+
+??? Example Solution
+
+	```diff
+	-	boolean playDiceGame(ArrayList<Character> characters, ArrayList<Item> items, String otherCharacterName) {
+	+	boolean playDiceGame(ArrayList<Character> characters, ArrayList<Item> items, String otherCharacterName) {
+		// ...
+			if (!diceGamePossible) {
+				Console.writeLine("You can't play a dice game.");
+			} else {
+			// ...
+				if (playerScore > otherCharacterScore) {
+					Console.writeLine("You win!");
+					takeItemFromOtherCharacter(items, characters.get(indexOfOtherCharacter).id);
+				} else if (playerScore < otherCharacterScore) {
+					Console.writeLine("You lose!");
+	+				say("Your loss cost your life, as the guard stabs you straight in the chest.");
+	+				return true;
+	-				takeRandomItemFromPlayer(items, characters.get(indexOfOtherCharacter).id);
+				} else {
+					Console.writeLine("Draw!");
+				}
+			}
+	+	return false;
+		}
+	```
+	
+	```diff
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+			case "playdice":
+	-			playDiceGame(characters, items, instruction);
+	+			stopGame = playDiceGame(characters, items, instruction);
+				break;
+			// ...
+			}
+		}
+		Console.readLine();
+	}
+	```
+	
+### Q22 - Container items can be used, Items can be added and removed from containers.
+
+Requires a fair amount of code, but considering containers have a flag to say what items they contain, I can see this coming up. Would be an ending question worth around 10-13 marks.
+
+??? Example Solution
+
+	```java
+	void addItemToContainer(ArrayList<Item> items, Item container) {
+		Console.write("Would you like to fill (f) or empty (e) the " + container.name + "? ");
+		String response = Console.readLine().toLowerCase().trim();
+
+		if (response.equals("f")) {
+			Console.write("What item would you like to put inside of the " + container.name +"? ");
+			String itemToMove = Console.readLine().toLowerCase();
+			int indexOfItemToMove = getIndexOfItem(itemToMove, -1, items);
+
+			if(items.get(indexOfItemToMove).location == INVENTORY && !itemToMove.equals(container.name))
+			{
+				changeLocationOfItem(items, indexOfItemToMove, container.id);
+				say("The " + itemToMove + " has been placed in the " + container.name);
+			}
+			else if(itemToMove.equals(container.name))
+			{
+				say("You can't put an item inside itself");
+			}
+			else
+			{
+				say("You dont have that item");
+			}
+		} else if (response.equals("e")) {
+			Console.write("What item would you like to remove from the " + container.name +"?");
+			String itemToRemove = Console.readLine().toLowerCase();
+			int indexOfItemToRemove = getIndexOfItem(itemToRemove, -1, items);
+
+			if(items.get(indexOfItemToRemove).location == container.id)
+			{
+				changeLocationOfItem(items, indexOfItemToRemove, INVENTORY);
+				say("The " + itemToRemove + " has been placed in your inventory");
+			}
+			else
+			{
+				say("That item is not in the container");
+			}
+		} else {
+			say("You cannot do that.");
+		}
+
+	}
+	```
+	
+	```diff
+	void useItem(ArrayList<Item> items, String itemToUse, int currentLocation, ArrayList<Place> places) {
+		boolean stopGame = false;
+		int position, indexOfItem;
+		String resultForCommand, subCommand = "", subCommandParameter = "";
+		indexOfItem = getIndexOfItem(itemToUse, -1, items);
+		if (indexOfItem != -1) {		
+	+		if((items.get(indexOfItem).location == INVENTORY ||items.get(indexOfItem).location == currentLocation) && items.get(indexOfItem).status.contains("container"))
+	+		{
+	+			addItemToContainer(items, items.get(indexOfItem));
+	+			return;
+	+		}
+		// ...
+	}
+	```
+	
+### Q23 - Create 'teleport item' command.
+
+Very similar to teleporting a character, but requires some more code to find the specific item needed. I'd say it would be an ending question.
+
+??? Example Solution
+
+	```java
+	void teleportItem(ArrayList<Place> places, ArrayList<Item> items, String itemToMove) {
+		int response;
+		int id = getIndexOfItem(itemToMove, -1, items);
+
+		//Only allow items in players inventory to be teleported
+		for (Item item : items) {
+			if (item.name.equals(itemToMove) && item.location != INVENTORY) {
+				say(itemToMove + " is not in your inventory.");
+				return;
+			}
+		}		
+
+		Console.writeLine();
+		Console.writeLine("1 = Blue room");
+		Console.writeLine("2 = Store cupboard");
+		Console.writeLine("3 = Bare bed room");
+		Console.writeLine("4 = Empty corridor");
+		Console.writeLine("5 = Guardroom");
+		Console.writeLine("6 = Flag Jail cell");
+		Console.writeLine("7 = Skeleton Jail cell");
+		Console.writeLine("8 = Cellar");
+		Console.write("Here are a list of rooms. Enter the number relating to the room you wish to teleport the item to: ");
+
+		//If an invalid response, exit the function, otherwise teleport the player
+		try {
+			response = Integer.parseInt(Console.readLine().trim());
+			changeLocationOfItem(items, id, response);
+			say(itemToMove + " has been teleported.");
+		} catch (Exception e) {
+			say("Cannot teleport item to that room.");
+			return;
+		}
+
+	}
+	```
+	
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "teleport":
+	+			teleportItem(places, items, instruction);
 	+			break;
 			// ...
 			}
