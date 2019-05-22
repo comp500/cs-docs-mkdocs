@@ -1083,7 +1083,7 @@ Requires a fair amount of code, but considering containers have a flag to say wh
 			}
 			else
 			{
-				say("You dont have that item");
+				say("You don't have that item");
 			}
 		} else if (response.equals("e")) {
 			Console.write("What item would you like to remove from the " + container.name +"?");
@@ -1180,7 +1180,7 @@ Very similar to teleporting a character, but requires some more code to find the
 
 ### Q24 - Create a 'command history list'.
 
-Requires an ArrayList<String> which can be complicated if you don't know how to use it, but other than that, it is a really easy bit of code. Probably an initial question.
+Requires an ArrayList<String> which can be complicated if you don't know how to use it, but other than that it is a really easy bit of code. You'll be able to see how ArrayLists work from other parts of the code. Probably an initial question.
 
 ??? Example Solution
 
@@ -1216,7 +1216,7 @@ Requires an ArrayList<String> which can be complicated if you don't know how to 
 	
 ### Q25 - Search/display the current directory for available games (to make the beginning less confusing for first time user).
 
-Whilst being relatively easy on paper, in practise it does need you to know how to use the File class built into Java, along with knowing how to access the current working directory. In the exam they might tell you a specific directory to put the save games into when doing this task. Would be a middle question in my opinion.
+Whilst being relatively easy on paper, in reality it does need you to know how to use the File class built into Java, along with knowing how to access the current working directory. In the exam they might tell you a specific directory to put the save games into when doing this task. Would be a middle question in my opinion.
 
 ??? Example Solution
 
@@ -1228,7 +1228,7 @@ Whilst being relatively easy on paper, in practise it does need you to know how 
 		ArrayList<Place> places = new ArrayList<>();
 		
 	+	Console.writeLine("Games available:");
-	+	File folder = new File(System.getProperty("user.dir"));
+	+	File folder = new File("gameFolder");
 	+	File[] listOfFiles = folder.listFiles();
 		
 	+	for (File file : listOfFiles) {
@@ -1253,7 +1253,7 @@ Whilst being relatively easy on paper, in practise it does need you to know how 
 	
 ### Q26 - If user inputs invalid command 5 times the game tells the user and ends the game.
 
-Another easy one, just add an int to track the number of times a bad command was entered, and when it has happened 5 times, end the game. Would be the first question.
+Another easy one, just add an int to track the number of times a bad command was entered, and end the game when it has happened 5 times. Would be the first question.
 
 ??? Example Solution
 
@@ -1310,7 +1310,7 @@ Pretty difficult, as it requires knowledge of other functions within the code to
 	
 	```diff
 	void playDiceGame(ArrayList<Character> characters, ArrayList<Item> items, String otherCharacterName) {
-		/...
+		//...
 		if (!diceGamePossible) {
 			Console.writeLine("You can't play a dice game.");
 		} else {
