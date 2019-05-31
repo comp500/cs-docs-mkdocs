@@ -71,6 +71,7 @@ Java doesn’t allow you to return multiple variables, so this will not come up 
 - ID_DIFFERENCE_FOR_OBJECT_IN_TWO_LOCATIONS
 
 Reasons why constants may be used:
+
 - It makes code more readable and understandable, as you can assign a name to a value that never changes.
 - A change for the value stored in the constant only has to be changed where it is declared, meaning a single change is needed to a value that may be used multiple times throughout code.
 - It allows literal values to have some meaning, as they could be ambiguous (e.g. 7 could mean the total number of days in a week, or the number of seconds to spend on a task).
