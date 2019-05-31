@@ -4,7 +4,24 @@ This page contains solutions for the wikibook on the 2019 A Level practical exam
 
 ## Section C prediction answers
 
+## Section D predictions
+
+### Key:
+**Bold** - Likely to come up in my opinion.  
+Normal - Could potentially come up.  
+*Italic* - Unlikely to come up.  
+
+| Question | Marks | What could come up                                                                                                                                                                                                                                                                           |
+|:--------:|:-----:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10       | 5     | Allow file name with/without extension.<br>**Are you sure you want to quit?**<br>**Add 'examine room' option to view details of room again.**<br>**Count the number of moves a player makes.**<br>If you are in the cellar you must be carrying a torch to see items.<br>*Create a 'command history list'.* |
+| 11       | 8     | Limit Inventory Size by Item Count.<br>**Limit Inventory Size by Item Weight.**                                                                                                                                                                                                                 |
+| 12       | 13    | Automatically unlock and open doors.<br>*Save a high score.*<br>**Add 'Fill (item)' Command.**<br>**Container items can be used, Items can be added and removed from containers.**                                                                                                                    |
+| 13       | 9     | **Create 'teleport (location)' command.**<br>**Create a new 'drop (item)' command.**<br>**Add Eat Command.**<br>*Add Drink Command.*<br>If the user loses the dice game they can choose what item to give up rather than a random item.                                                                  |
+
+
 ## Section D solutions
+
+
 
 ### Q1 - Automatically unlock and open doors.
 
