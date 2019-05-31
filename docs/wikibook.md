@@ -1328,3 +1328,35 @@ Pretty difficult, as it requires knowledge of other functions within the code to
 		}
 	}
 	```
+	
+### Q28 - Type 'debugchar' to display the details of all characters in the game.
+
+Very easy, but I don't see this coming up as it doesn't add any purpose to the game other than for debugging, which the exam doesn't really tend to focus on. Would be the second question.
+
+??? Example Solution
+
+	```java
+	void displayCharacters(ArrayList<Character> characters) {
+		for (Character c : characters) {
+			Console.writeLine("Character profile for " + c.name + ":");
+			Console.writeLine("\tID: " + c.id);
+			Console.writeLine("\tDescription: " + c.description);
+			Console.writeLine("\tLocation: " + c.currentLocation);
+			Console.writeLine();
+		}
+	}
+	```
+	
+	```diff
+	void playGame(ArrayList<Character> characters, ArrayList<Item> items, ArrayList<Place> places) {
+			// ...
+	+		case "debugchar":
+	+			displayCharacters(characters);
+	+			break;
+			default:
+				Console.writeLine("Sorry, you don't know how to " + command + ".");
+			}
+		}
+		Console.readLine();
+	}
+	```
