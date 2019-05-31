@@ -4,6 +4,86 @@ This page contains solutions for the wikibook on the 2019 A Level practical exam
 
 ## Section C prediction answers
 
+### A function that returns multiple variables.
+
+Java doesn’t allow you to return multiple variables, so this will not come up in the exam. AQA made this mistake last year!
+
+### A built-in function used in the function TakeItemFromOtherCharacter.
+
+- get
+- size
+- ArrayList (is technically a constructor, so be careful with this one!)
+- add
+- contains
+- indexOf
+
+### A class that has exactly 4 attributes.
+
+- Character
+
+### A constructor.
+
+- Main
+
+### A user defined function.
+
+- getInstruction
+- extractCommand
+- go
+- displayDoorStatus
+- displayContentsOfContainerItem
+- examine
+- getPositionOfCommand
+- getResultForCommand
+- say
+- extractResultForCommand
+- changeLocationReference
+- openClose
+- getIndexOfItem
+- changeLocationOfItem
+- changeStatusOfItem
+- getRandomNumber
+- rollDie
+- isNumeric
+- changeStatusOfDoor
+- useItem
+- readItem
+- getItem
+- checkIfDiceGamePossible
+- takeItemFromOtherCharacter
+- takeRandomItemFromPlayer
+- playDiceGame
+- moveItem
+- displayInventory
+- displayGettableItemsInLocation
+- displayOpenCloseMessage
+- playGame
+- loadGame
+
+### A user defined function other than 'Main' that takes no arguments.
+
+- getInstruction
+
+### State the name of a constant, and explain why constants might be used.
+
+- INVENTORY
+- MINIMUM_ID_FOR_ITEM
+- ID_DIFFERENCE_FOR_OBJECT_IN_TWO_LOCATIONS
+
+Reasons why constants may be used:
+- It makes code more readable and understandable, as you can assign a name to a value that never changes.
+- A change for the value stored in the constant only has to be changed where it is declared, meaning a single change is needed to a value that may be used multiple times throughout code.
+- It allows literal values to have some meaning, as they could be ambiguous (e.g. 7 could mean the total number of days in a week, or the number of seconds to spend on a task).
+
+### Explain the role of the variable Moved in the function Go
+Moved is used to see if a player has already moved to that location, and states if a player is able to move in that direction.
+
+### Describe the role of the variable 'TempCharacter' in the function 'LoadGame'
+Used to build a character object, which is then added to the ArrayList<Character>.
+	
+### Explain the purpose of the following line in GetInstruction: `instruction = Console.readLine().toLowerCase();`
+The line of code will read the input from the user in the console. Once they hit enter, the string that has been entered will become lowercase, which makes it easier to compare with other instructions, as you only have to deal with one case of letters.
+
 ## Section D predictions
 
 ### Key:
