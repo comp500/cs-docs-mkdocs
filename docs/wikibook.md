@@ -112,26 +112,15 @@ It requires the use of other functions within the code (changeStatusOfItem and o
 
 	```java
 	void autoUnlockOpenDoor(ArrayList<Item> items, ArrayList<Place> places, int currentLocation) {
-		// Variables
-		int index = 0;
-
-		// Check to see if there is a key
 		for (Item i : items) {
-			// If it is a gold key in their inventory, unlock and open gold door
-			if (i.name.equals("gold key") && i.location == INVENTORY) {
-				index = getIndexOfItem("gold door", -1, items);
-				changeStatusOfItem(items, index, "unlocked");
+			if (i.name.contains("gold key") && i.location == INVENTORY) {
+				useItem(items, "gold key", currentLocation, places);
 				openClose(true, items, places, "gold door", currentLocation);
-				say("You have unlocked and opened the gold door");
-				break;
-			}
-			// If it is a silver key in their inventory, unlock and open silver door
-			if (i.name.equals("silver key") && i.location == INVENTORY) {
-				index = getIndexOfItem("silver door", -1, items);
-				changeStatusOfItem(items, index, "unlocked");
+				say("You have opened the gold door.");
+			} else if (i.name.contains("silver key") && i.location == INVENTORY) {
+				useItem(items, "silver key", currentLocation, places);
 				openClose(true, items, places, "silver door", currentLocation);
-				say("You have unlocked and opened the silver door");
-				break;
+				say("You have opened the silver door.");
 			}
 		}
 	}
